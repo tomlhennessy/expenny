@@ -220,10 +220,29 @@ main {
     gap: 3rem;
   }
 
+  .hero-section {
+    padding: 3rem;
+  }
+
+  header-text {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+
+  .hero-section > div:first-of-type p {
+    max-width: 400px;
+  }
+
 }
 
 
 @media (min-width: 768px) {
+  .hero-section {
+    padding: 6rem 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+  }
+
   .footer-content {
     flex-direction: row;
   }
