@@ -51,8 +51,19 @@ main {
 
 
 /* home page */
+.hero-section {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 3rem;
+  padding: 2rem;
+}
 
-
+.hero-section > div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 
 
@@ -66,8 +77,23 @@ main {
 
 /* login  */
 
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+  padding: 4rem 0;
+}
 
-
+.login > div:last-of-type {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
 
 
@@ -90,7 +116,7 @@ main {
 .footer-content > div:first-of-type {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 
 }
 
@@ -114,9 +140,22 @@ main {
     display: block;
   }
 
+  main {
+    gap: 3rem;
+  }
+
 }
 
 
 @media (min-width: 768px) {
+  .footer-content {
+    flex-direction: row;
+  }
 
+  .footer-content > div:last-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
 }
