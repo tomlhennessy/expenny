@@ -27,27 +27,29 @@ export default function SubscriptionsDisplay() {
 
                 <small>per {billingFrequency}</small>
 
-                <div className='sub-renewal'>
-                  <div>
-                    <p>Started</p>
-                    <h4>{startDate}</h4>
+                <div className="sub-renewal">
+                    <div>
+                      <p>Started</p>
+                      <h4>{startDate}</h4>
                   </div>
                   <div>
                     <p>Due</p>
                     <h4>{getDaysUntilNextCharge(startDate, billingFrequency)}</h4>
                   </div>
-                  <div className='white-line' />
-                  <p>{notes}</p>
-                  <div className='subcription-actions'>
-                    <button className='button-card'>
-                      <i className="fa-solid fa-pen-to-square"></i>
-                      Edit
-                    </button>
-                    <button className='button-card'>
-                      <i className="fa-solid fa-trash"></i>
-                      Delete
-                    </button>
-                  </div>
+                </div>
+
+                <div className="white-line" />
+                <p>{notes}</p>
+
+                <div className="subscription-actions">
+                  <button className="button-card">
+                  <i className="fa-solid fa-pen-to-square"></i>
+                    Edit
+                  </button>
+                  <button className="button-card">
+                  <i className="fa-solid fa-trash"></i>
+                    Delete
+                  </button>
                 </div>
 
               </div>
