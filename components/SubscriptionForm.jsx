@@ -78,10 +78,17 @@ export default function SubscriptionForm() {
                     </select>
                 </label>
 
-                <label>
+                <label className='fat-column'>
                     <span>Notes</span>
                     <textarea name='notes' placeholder='e.g. shared with family, includes cloud storage' />
                 </label>
+
+                <div className='fat-column form-submit-btns'>
+                    <button>Cancel</button>
+                    <button type='submit'>
+                        Add Subscription
+                        </button>
+                </div>
 
             </form>
         </section>

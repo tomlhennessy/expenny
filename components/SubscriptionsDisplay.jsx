@@ -10,7 +10,7 @@ export default function SubscriptionsDisplay() {
             const { name, category, cost, currency, billingFrequency, startDate, notes, status } = sub
 
             return (
-              <div key={subIndex} className='card subcription-card'>
+              <div key={subIndex} className='card subscription-card'>
                 <div>
                   <h3>{name}</h3>
                   <div className={'status ' + (status === 'Active' ? 'card-button-primary' : 'card-button-secondary')}>
