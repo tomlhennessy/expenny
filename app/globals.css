@@ -227,6 +227,70 @@ section > h2 {
   margin: 1rem 0;
 }
 
+.subscription-actions {
+  pointer-events: none;
+  transition-duration: 200ms;
+  opacity: 0;
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: white;
+}
+
+.subscription-actions button {
+  width: 100%;
+}
+
+.subscription-actions button i {
+  padding-right: 0.5rem;
+}
+
+.subscription-card:hover .subscription-actions {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.add-subscription {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+section form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+}
+
+section form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+  max-width: unset;
+}
+
+form textarea {
+  resize: none;
+}
+
+.form-submit-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.fat-column {
+  grid-column: span 2 / span 2;
+}
+
 
 /* login  */
 
@@ -308,6 +372,15 @@ section > h2 {
 
   .hero-section > div:first-of-type p {
     max-width: 400px;
+  }
+
+  .analytics-card {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .card-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 
 }
