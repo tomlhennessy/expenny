@@ -11,6 +11,78 @@ export default function SubscriptionForm() {
                     <input type='text' name='name' placeholder='e.g. Netflix, Spotify' required />
                 </label>
 
+                <label>
+                    <span>Category </span>
+                    <select name='category'>
+                        {['Entertainment', 'Music', 'Software', 'Web Services', 'Health & Fitness', 'Other'].map((cat, catIndex) => {
+                            return (
+                                <option key={catIndex}>
+                                    {cat}
+                                </option>
+                            )
+                        })}
+                    </select>
+                </label>
+
+                <label>
+                    <span>Cost</span>
+                    <input type='number' name='cost' step='0.01' placeholder='e.g. 12.00' required />
+                </label>
+
+                <label>
+                    <span>Currency</span>
+                    <select name='currency'>
+                        {['USD', 'EUR', 'GBP', 'NZD', 'AUD', 'Other'].map((curr, currIndex) => {
+                            return (
+                                <option key={currIndex}>{curr}</option>
+                            )
+                        })}
+                    </select>
+                </label>
+
+                <label>
+                    <span>Billing Frequency</span>
+                    <select name='billingFrequency'>
+                        {['Monthly', 'Yearly', 'Quarterly', 'One-time'].map((bill, billIndex) => {
+                            return (
+                                <option key={billIndex}>{bill}</option>
+                            )
+                        })}
+                    </select>
+                </label>
+
+                <label>
+                    <span>Payment Method</span>
+                    <select name='paymentMethod'>
+                        {['Credit Card', 'Debit Card', 'Paypal', 'Bank Transfer', 'Other'].map((pay, payIndex) => {
+                            return (
+                                <option key={payIndex}>{pay}</option>
+                            )
+                        })}
+                    </select>
+                </label>
+
+                <label>
+                    <span>Subscription Start Date</span>
+                    <input type='date' name='startDate' required />
+                </label>
+
+                <label>
+                    <span>Status</span>
+                    <select name='status'>
+                        {['Active', 'Paused', 'Cancelled'].map((status, statusIndex) => {
+                            return (
+                                <option key={statusIndex}>{status}</option>
+                            )
+                        })}
+                    </select>
+                </label>
+
+                <label>
+                    <span>Notes</span>
+                    <textarea name='notes' placeholder='e.g. shared with family, includes cloud storage' />
+                </label>
+
             </form>
         </section>
     )
