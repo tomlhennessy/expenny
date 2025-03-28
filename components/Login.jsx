@@ -10,8 +10,8 @@ export default function Login() {
     return (
       <div className='login'>
         <h2>{isRegistration ? 'Create an account' : 'Login'}</h2>
-        <input placeholder="Email" type="email" />
-        <input placeholder="Password" type="password" />
+        <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" />
+        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" type="password" />
         <button>Submit</button>
         <div className='full-line' />
         <div>
