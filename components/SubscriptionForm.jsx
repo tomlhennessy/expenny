@@ -1,6 +1,26 @@
 'use client'
 
+import { useState } from "react"
+
 export default function SubscriptionForm() {
+    const [formData, setFormData] = useState({
+        name: '',
+        category: 'Web Services',
+        cost: '',
+        currency: 'USD',
+        billingFrequency: 'Monthly',
+        nextBillingDate: '',
+        paymentMethod: 'Credit Card',
+        startDate: '',
+        renewalType: '',
+        notes: '',
+        status: 'Active'
+    })
+
+    function handleChangeInput(e) {
+        const newData = { ...formData }
+    }
+
     return (
         <section>
             <h2>Add a new subscription</h2>

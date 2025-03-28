@@ -48,6 +48,12 @@ main {
   flex: 1;
 }
 
+main > div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 
 
 /* home page */
@@ -265,7 +271,7 @@ section > h2 {
 section form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem 2rem;
+  gap: 1rem;
 }
 
 section form label {
@@ -381,6 +387,10 @@ form textarea {
   .card-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.5rem;
+  }
+
+  section form {
+    gap: 1rem 2rem;
   }
 
 }
