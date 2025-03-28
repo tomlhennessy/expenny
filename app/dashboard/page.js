@@ -8,7 +8,7 @@ import { useState } from "react";
 
 
 export default function DashboardPage() {
-    const isAuthenticated = true
+    const isAuthenticated = false
     const [isAddEntry, setIsAddEntry] = useState(false)
 
     function handleToggleInput() {
@@ -22,9 +22,9 @@ export default function DashboardPage() {
     }
 
     return (
-      <div>
+      <div className='section-container'>
         <SubscriptionSummary />
-        <SubscriptionsDisplay />
+        <SubscriptionsDisplay handleShowInput={ isAddEntry ? () => { } : handleToggleInput} />
         {isAddEntry && (
           <SubscriptionForm onSubmit={() => { }} closeInput={handleToggleInput} />
         )}

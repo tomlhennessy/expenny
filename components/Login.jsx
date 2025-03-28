@@ -1,15 +1,24 @@
+'use client'
+
+import { useState } from "react"
 
 export default function Login() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [isRegistration, setIsRegistration] = useState('')
+
     return (
       <div className='login'>
-        <h2>Login</h2>
+        <h2>{isRegistration ? 'Create an account' : 'Login'}</h2>
         <input placeholder="Email" type="email" />
         <input placeholder="Password" type="password" />
         <button>Submit</button>
         <div className='full-line' />
         <div>
-          <p>Don&apos;t have an account?</p>
-          <button>Sign Up</button>
+          <p>{isRegistration ? 'Already have an account?' : 'Don&apos\'t have an account?'}</p>
+          <button onClick={() => {
+            setIsRegistration(!isRegistration)
+          }}>{isRegistration ? 'Log in' : 'Sign up'}</button>
         </div>
       </div>
     )

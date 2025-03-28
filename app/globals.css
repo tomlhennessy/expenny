@@ -48,13 +48,6 @@ main {
   flex: 1;
 }
 
-main > div:first-of-type {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-
 
 /* home page */
 .hero-section {
@@ -151,6 +144,12 @@ main > div:first-of-type {
 
 
 /* dashboard page */
+
+.section-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
 
 section {
   display: flex;
