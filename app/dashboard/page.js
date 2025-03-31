@@ -9,7 +9,6 @@ import { useState } from "react";
 
 
 export default function DashboardPage() {
-    const isAuthenticated = false
     const [isAddEntry, setIsAddEntry] = useState(false)
 
     const [formData, setFormData] = useState({
@@ -26,7 +25,8 @@ export default function DashboardPage() {
       status: 'Active'
     })
 
-    const { handleDeleteSubscription } = useAuth()
+    const { handleDeleteSubscription, userData, currentUser, loading } = useAuth()
+    const isAuthenticated = !!currentUser
 
     function handleChangeInput(e) {
         const newData = {
