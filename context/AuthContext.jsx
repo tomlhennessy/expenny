@@ -70,8 +70,8 @@ export function AuthProvider(props) {
                 const docRef = doc(db, 'users', user.uid)
                 const docSnap = await getDoc(docRef)
                 console.log('Fetching user data')
-
-                let firebaseData = { subscriptions: [] } // this is the default data for a new user
+                let firebaseData = { subscriptions }
+                // let firebaseData = { subscriptions: [] } // this is the default data for a new user
 
                 if (docSnap.exists()) {
                     console.log('Found user data')
