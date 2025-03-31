@@ -1,7 +1,7 @@
 'use client'
 
-import { db } from "@/firebase"
-import { onAuthStateChanged } from "firebase/auth"
+import { auth, db } from "@/firebase"
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
 import { doc, getDoc } from "firebase/firestore"
 import { useContext, useState, useEffect } from "react"
 
@@ -11,9 +11,6 @@ export function useAuth() {
     return useContext(AuthContext)
 }
 
-const value = {
-    currentUser, userData, loading
-}
 
 export function AuthProvider(props) {
     const { children } = props
@@ -21,6 +18,45 @@ export function AuthProvider(props) {
     const [currentUser, setCurrentUser] = useState(null)
     const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true)
+
+    function signup(email, password) {
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    function login(email, password) {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    function logout() {
+        setCurrentUser(null)
+        setUserData(null)
+        return signOut(auth)
+    }
+
+    async function handleAddSubscription(newSubscription) {
+        // modify the local state (global context)
+        const newSubscriptions = [ ...userData.subscriptions, newSubscription ]
+        setUserData({ subscriptions: newSubscriptions })
+
+        // write the changes to firebase db (asynchronous)
+    }
+
+    async function handleEditSubscription(index) {
+        // before we delete, make sure we open up the inpout and prefill all the values with the entry we are going to edit
+
+
+        // look up subscription at that index and delete it
+        // use the delete handler
+
+    }
+
+    async function handleDeleteSubscription(index) {
+        // delete the entry at that index
+        const newSubscriptions = userData.subscriptions.filter((val, valIndex) => {
+            return valIndex != index
+        })
+        setUserData({ subscriptions: newSubscriptions })
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async user => {
@@ -50,6 +86,11 @@ export function AuthProvider(props) {
         })
         return unsubscribe
     }, [])
+
+    const value = {
+        currentUser, userData, loading, signup, login, logout, handleAddSubscription, handleDeleteSubscription
+    }
+
 
     return (
         <AuthContext.Provider value={value}>

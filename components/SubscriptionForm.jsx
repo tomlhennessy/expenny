@@ -3,29 +3,9 @@
 import { useState } from "react"
 
 export default function SubscriptionForm(props) {
-    const { onSubmit, closeInput } = props
+    const { onSubmit, closeInput, formData, handleChangeInput } = props
 
-    const [formData, setFormData] = useState({
-        name: '',
-        category: 'Web Services',
-        cost: '',
-        currency: 'USD',
-        billingFrequency: 'Monthly',
-        nextBillingDate: '',
-        paymentMethod: 'Credit Card',
-        startDate: '',
-        renewalType: '',
-        notes: '',
-        status: 'Active'
-    })
 
-    function handleChangeInput(e) {
-        const newData = {
-            ...formData,
-            [e.target.name]: e.target.value
-        }
-        setFormData(newData)
-    }
 
     function handleFormSubmit() {
         e.preventDefault() // prevents behaviour of reloading web page
