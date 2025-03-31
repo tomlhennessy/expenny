@@ -17,7 +17,7 @@ export function AuthProvider(props) {
 
     const [currentUser, setCurrentUser] = useState(null)
     const [userData, setUserData] = useState({ subscriptions: []})
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     function signup(email, password) {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -61,12 +61,13 @@ export function AuthProvider(props) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async user => {
             try {
-                setLoading(true)
                 setCurrentUser(user)
 
                 if (!user) return
 
                 // oh we found a user, lets check the database
+                setLoading(true)
+
                 const docRef = doc(db, 'users', user.uid)
                 const docSnap = await getDoc(docRef)
                 console.log('Fetching user data')
