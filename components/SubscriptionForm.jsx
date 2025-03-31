@@ -1,15 +1,19 @@
 'use client'
 
+import { useAuth } from "@/context/AuthContext"
 import { useState } from "react"
 
 export default function SubscriptionForm(props) {
-    const { onSubmit, closeInput, formData, handleChangeInput } = props
+    const { onSubmit, closeInput, formData, handleChangeInput, handleResetForm } = props
+    const { handleAddSubscription } = useAuth()
 
 
 
     function handleFormSubmit() {
         e.preventDefault() // prevents behaviour of reloading web page
-        onSubmit()
+        handleAddSubscription(formData)
+        handleResetForm()
+        closeInput()
     }
 
     return (

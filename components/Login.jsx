@@ -6,7 +6,7 @@ import { useState } from "react"
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [isRegistration, setIsRegistration] = useState('')
+    const [isRegistration, setIsRegistration] = useState(false)
     const [error, setError] = useState(null)
     const [authenticating, setAuthenticating] = useState(false)
 
@@ -37,7 +37,7 @@ export default function Login() {
     return (
       <div className='login'>
         <h2>{isRegistration ? 'Create an account' : 'Login'}</h2>
-        {error & (
+        {error && (
             <p>❌ {error}</p>
         )}
         <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" type="email" />
@@ -45,7 +45,7 @@ export default function Login() {
         <button onClick={handleAuthenticate} disabled={authenticating}>{authenticating ? 'Submitting...' : 'Submit'}</button>
         <div className='full-line' />
         <div>
-          <p>{isRegistration ? 'Already have an account?' : 'Don&apos\'t have an account?'}</p>
+          <p>{isRegistration ? 'Already have an account?' : 'Don\'t have an account?'}</p>
           <button onClick={() => {
             setIsRegistration(!isRegistration)
           }}>{isRegistration ? 'Log in' : 'Sign up'}</button>

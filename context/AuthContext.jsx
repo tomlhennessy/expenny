@@ -3,9 +3,9 @@
 import { auth, db } from "@/firebase"
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
 import { doc, getDoc } from "firebase/firestore"
-import { useContext, useState, useEffect } from "react"
+import { useContext, useState, useEffect, createContext } from "react"
 
-const AuthContext = createContext
+const AuthContext = createContext()
 
 export function useAuth() {
     return useContext(AuthContext)
@@ -16,7 +16,7 @@ export function AuthProvider(props) {
     const { children } = props
 
     const [currentUser, setCurrentUser] = useState(null)
-    const [userData, setUserData] = useState(null)
+    const [userData, setUserData] = useState({ subscriptions: []})
     const [loading, setLoading] = useState(true)
 
     function signup(email, password) {
@@ -70,8 +70,8 @@ export function AuthProvider(props) {
                 const docRef = doc(db, 'users', user.uid)
                 const docSnap = await getDoc(docRef)
                 console.log('Fetching user data')
-                let firebaseData = { subscriptions }
-                // let firebaseData = { subscriptions: [] } // this is the default data for a new user
+                // let firebaseData = { subscriptions }
+                let firebaseData = { subscriptions: [] } // this is the default data for a new user
 
                 if (docSnap.exists()) {
                     console.log('Found user data')
