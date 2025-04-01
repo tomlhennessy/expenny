@@ -39,28 +39,35 @@ export function AuthProvider(props) {
 
 
     async function saveToFirebase(data) {
+        if (!currentUser) {
+          console.log("❌ No currentUser inside saveToFirebase")
+          return
+        }
+
         try {
-            if (!currentUser) return
-            const userRef = doc(db, 'users', currentUser.uid)
-            await setDoc(userRef, {
-                subscriptions: data
-            }, { merge: true })
+          const userRef = doc(db, 'users', currentUser.uid)
+          await setDoc(userRef, { subscriptions: data }, { merge: true })
+          console.log("✅ Saved to Firestore")
         } catch (err) {
-            console.log('Error saving to Firebase:', err.message)
+          console.error("❌ Failed to save to Firestore:", err.message)
         }
     }
 
 
-    async function handleAddSubscription(newSubscription) {
-        // modify the local state (global context)
-        if (userData.subscriptions.length > 30) { return }
 
-        const newSubscriptions = [ ...userData.subscriptions, newSubscription ]
+    async function handleAddSubscription(newSubscription) {
+        if (!currentUser) {
+          console.log("🚫 Tried to add subscription but currentUser is null")
+          return
+        }
+
+        const newSubscriptions = [...userData.subscriptions, newSubscription]
+
         setUserData({ subscriptions: newSubscriptions })
 
-        // write the changes to firebase db (asynchronous)
         await saveToFirebase(newSubscriptions)
     }
+
 
     async function handleDeleteSubscription(index) {
         // delete the entry at that index
@@ -73,34 +80,39 @@ export function AuthProvider(props) {
     }
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, async user => {
-            try {
-                setCurrentUser(user)
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
 
-                if (!user) return
+          setCurrentUser(user)
 
-                // oh we found a user, lets check the database
-                setLoading(true)
+          if (!user) {
+            console.log("🚪 No user - redirecting or staying logged out")
+            setUserData({ subscriptions: [] })
+            return
+          }
 
-                const docRef = doc(db, 'users', user.uid)
-                const docSnap = await getDoc(docRef)
-                console.log('Fetching user data')
-                // let firebaseData = { subscriptions }
-                let firebaseData = { subscriptions: [] } // this is the default data for a new user
+          try {
+            const docRef = doc(db, 'users', user.uid)
+            const docSnap = await getDoc(docRef)
 
-                if (docSnap.exists()) {
-                    console.log('Found user data')
-                    firebaseData = docSnap.data()
-                }
-                setUserData(firebaseData)
-                setLoading(false)
+            let firebaseData = { subscriptions: [] }
 
-            } catch (err) {
-                console.log(err.message)
+            if (docSnap.exists()) {
+              console.log("✅ User data found in Firestore")
+              firebaseData = docSnap.data()
+            } else {
+              console.log("🆕 Creating new user document")
+              await setDoc(docRef, firebaseData)
             }
+
+            setUserData(firebaseData)
+          } catch (err) {
+            console.error("❌ Error loading user data:", err)
+          }
         })
+
         return unsubscribe
     }, [])
+
 
     const value = {
         currentUser, userData, loading, signup, login, logout, handleAddSubscription, handleDeleteSubscription

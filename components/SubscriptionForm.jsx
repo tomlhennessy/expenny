@@ -9,12 +9,20 @@ export default function SubscriptionForm(props) {
 
 
 
-    function handleFormSubmit() {
-        e.preventDefault() // prevents behaviour of reloading web page
-        handleAddSubscription(formData)
-        handleResetForm()
-        closeInput()
+    async function handleFormSubmit(e) {
+        e.preventDefault();
+        console.log("📤 Submitting subscription:", formData)
+
+        try {
+            await handleAddSubscription(formData)
+            console.log("✅ Subscription saved")
+            handleResetForm()
+            closeInput()
+        } catch (err) {
+            console.error("❌ Error saving subscription:", err.message)
+        }
     }
+
 
     return (
         <section>
