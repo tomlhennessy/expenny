@@ -38,11 +38,11 @@ export default function RootLayout({ children }) {
           <p className='copyright'>© Copyright 2024-2025, Tom Hennessy.<br />All rights reserved.</p>
         </div>
         <div>
-          <p>Facing issues? <a>Get help</a></p>
-          <p>Suggestions for improvement? <a>Share feedback</a></p>
+          <p>Facing issues? <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLScdnBBf51r8BrK3Y7wPnietEzYxcyHZQn315iMf9LI44Fjnsg/viewform?usp=header">Get help</a></p>
+          <p>Suggestions for improvement? <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSdSdTP5WuqJDJPatDg9L-i_e4OBF0Bcj4QhR88vwaGgXeD-Fw/viewform?usp=header">Share feedback</a></p>
           <div>
-            <Link href={'/privacy'}>Privacy Policy</Link>
-            <Link href={'/tos'}>Terms of Service</Link>
+            <Link href={'/privacy-policy'}>Privacy Policy</Link>
+            <Link href={'/terms-of-service'}>Terms of Service</Link>
           </div>
         </div>
       </div>

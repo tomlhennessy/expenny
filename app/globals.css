@@ -362,6 +362,44 @@ footer {
   gap: 1rem;
 }
 
+/* help pages */
+
+/* legal / help pages */
+
+.legal-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  line-height: 1.6;
+  font-size: 1rem;
+  color: var(--foreground); 
+}
+
+.legal-page h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.legal-page h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.legal-page p {
+  max-width: 800px;
+}
+
+.legal-page a {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+
 
 /* media queries */
 
