@@ -2,7 +2,7 @@
 
 import { auth, db } from "@/firebase"
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
-import { doc, getDoc } from "firebase/firestore"
+import { doc, getDoc, setDoc } from "firebase/firestore"
 import { useContext, useState, useEffect, createContext } from "react"
 
 const AuthContext = createContext()
@@ -33,21 +33,26 @@ export function AuthProvider(props) {
         return signOut(auth)
     }
 
+    async function saveToFirebase(data) {
+        try {
+            const userRef = doc(db, 'users', currentUser.uid)
+            const res = await setDoc(userRef, {
+                subscriptions: data
+            }, { merge: true })
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
+
     async function handleAddSubscription(newSubscription) {
         // modify the local state (global context)
+        if (userData.subscriptions.length > 30) { return }
+
         const newSubscriptions = [ ...userData.subscriptions, newSubscription ]
         setUserData({ subscriptions: newSubscriptions })
 
         // write the changes to firebase db (asynchronous)
-    }
-
-    async function handleEditSubscription(index) {
-        // before we delete, make sure we open up the inpout and prefill all the values with the entry we are going to edit
-
-
-        // look up subscription at that index and delete it
-        // use the delete handler
-
+        await saveToFirebase(newSubscriptions)
     }
 
     async function handleDeleteSubscription(index) {
@@ -56,6 +61,8 @@ export function AuthProvider(props) {
             return valIndex != index
         })
         setUserData({ subscriptions: newSubscriptions })
+
+        await saveToFirebase(newSubscriptions)
     }
 
     useEffect(() => {
