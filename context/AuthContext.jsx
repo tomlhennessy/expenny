@@ -1,7 +1,7 @@
 'use client'
 
 import { auth, db } from "@/firebase"
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { doc, getDoc, setDoc } from "firebase/firestore"
 import { useContext, useState, useEffect, createContext } from "react"
 
@@ -27,22 +27,29 @@ export function AuthProvider(props) {
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    function logout() {
-        setCurrentUser(null)
-        setUserData(null)
-        return signOut(auth)
+    async function logout() {
+        try {
+            await signOut(auth)
+            setCurrentUser(null)
+            setUserData({ subscriptions: [] })
+        } catch (err) {
+            console.log('Logout error:', err.message)
+        }
     }
+
 
     async function saveToFirebase(data) {
         try {
+            if (!currentUser) return
             const userRef = doc(db, 'users', currentUser.uid)
-            const res = await setDoc(userRef, {
+            await setDoc(userRef, {
                 subscriptions: data
             }, { merge: true })
         } catch (err) {
-            console.log(err.message)
+            console.log('Error saving to Firebase:', err.message)
         }
     }
+
 
     async function handleAddSubscription(newSubscription) {
         // modify the local state (global context)
