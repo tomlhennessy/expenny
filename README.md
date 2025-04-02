@@ -18,10 +18,13 @@ This project demonstrates key full-stack concepts: authentication, database desi
 
 - 🔐 **User Login** with Firebase Authentication  
 - 📊 **Real-Time Dashboard** with:
-  - Total monthly cost  
-  - Most expensive subscription  
-  - Subscription categories  
-  - Optional notes  
+  - Total monthly cost
+  - Total yearly cost
+  - Average monthly spending
+  - Active subscriptions
+  - Top spending category
+  - Upcoming billing count (next 7 days)
+  - Most expensive subscription
 - ➕ Add/edit/delete subscriptions  
 - 🔄 Seamless navigation with Next.js App Router  
 - 📱 Fully responsive UI  
