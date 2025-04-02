@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expenny – The Subscription Tracker 💸
 
-## Getting Started
+**Track, manage, and stay on top of your subscriptions in real-time.**  
+A full-stack Next.js + Firebase app with secure auth, real-time updates, and insightful monthly analytics.
 
-First, run the development server:
+[🔗 Live Demo](https://subscription-tracking.netlify.app/) 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📌 Overview
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Expenny helps users track recurring expenses like streaming services, memberships, and app subscriptions. It provides live data updates, secure logins, and a dashboard with meaningful insights — all built using Firebase and Next.js App Router.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This project demonstrates key full-stack concepts: authentication, database design, state management, and frontend logic.
+---
 
-## Learn More
+## 🚀 Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🔐 **User Login** with Firebase Authentication  
+- 📊 **Real-Time Dashboard** with:
+  - Total monthly cost  
+  - Most expensive subscription  
+  - Subscription categories  
+  - Optional notes  
+- ➕ Add/edit/delete subscriptions  
+- 🔄 Seamless navigation with Next.js App Router  
+- 📱 Fully responsive UI  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Tech Stack
 
-## Deploy on Vercel
+- **Frontend:** Next.js (App Router), React 
+- **Backend & Auth:** Firebase Authentication, Firestore  
+- **Deployment:** Netlify  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧩 Challenges & Solutions
+
+- **Realtime Database Sync:**  
+  Used Firestore snapshot listeners to instantly reflect changes across sessions and keep UI state consistent.
+
+- **Dashboard Metrics:**  
+  Implemented logic to calculate monthly costs, sort data by price, and categorise subscriptions — helping users understand their spending.
+
+- **User Experience:**  
+  Prioritised a clean, mobile-friendly UI with clear calls to action and instant feedback on data changes.
+
+---
+
+## 📈 Future Improvements
+
+- 🧱 **Rebuilding Backend in .NET (In Progress):**  
+  This transition will improve backend control and scalability. It also separates concerns more clearly than Firebase and allows stronger data validation and API design.
+
+- 📊 Add monthly expense charts  
+- 🔔 Set up reminders for upcoming renewals  
+
