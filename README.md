@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expenny – The Subscription Tracker 💸
 
-## Getting Started
+Track, manage, and stay on top of your subscriptions in real-time.
 
-First, run the development server:
+A full-stack **Next.js + Firebase** app with secure auth, Firestore database, and real-time analytics — originally built to practice full-stack concepts before rebuilding the backend in .NET.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔐 Live Demo
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**🌐** [Live App (Netlify)](https://subscription-tracking.netlify.app)
+**💻** [Frontend Repo (GitHub)](https://github.com/tomlhennessy/expenny)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧰 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend:** React · Next.js (App Router)
+- **Backend & Auth:** Firebase Authentication · Firestore
+- **Styling:** TailwindCSS
+- **Hosting:** Netlify
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🚀 Features
 
-## Deploy on Vercel
+- ✅ **User Authentication** (Firebase Auth)
+- ✅ **Add / Edit / Delete Subscriptions**
+- ✅ **Real-Time Firestore Sync** (live updates across sessions)
+- ✅ **Dashboard Analytics:**
+  - Total monthly & yearly cost
+  - Average monthly spending
+  - Most expensive sub
+  - Upcoming bills (next 7 days)
+  - Top spending category
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📈 Why I Built This
+
+Before moving into the .NET ecosystem, I wanted to solidify my understanding of full-stack concepts with Firebase. This version inspired the later rebuild using ASP.NET Core + Azure.
+
+---
+
+## 📸 Screenshots
+
+| Dashboard | Analytics |
+|----------|-----------|
+| ![Homepage](./screenshots/homepage.png) | ![Analytics](./screenshots/analytics.png) |
+
+---
+
+## 💡 What I Learned
+
+- Working with Firestore's real-time data listeners
+- Firebase Authentication flows with React
+- Building dynamic UI with React state + Tailwind
+- Structuring a small-scale fullstack app
